@@ -38,4 +38,3 @@ dependencies:
 
       # MLOps with R
       - azure-storage-blob
-      - azureml-dataprep

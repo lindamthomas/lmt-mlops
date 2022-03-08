@@ -31,4 +31,3 @@ dependencies:
       # Scoring deps
       - scikit-learn
       - pandas
-      - azureml-dataprep

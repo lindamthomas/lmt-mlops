@@ -30,4 +30,3 @@ dependencies:
       
       # Score copying deps
       - azure-storage-blob
-      - azureml-dataprep
