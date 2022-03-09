@@ -94,4 +94,6 @@ stages:
     container: mlops
     timeoutInMinutes: 0
     steps:
+    - script: python -m pip install --user --upgrade azureml-sdk 
+      displayName: 'upgrade Azure ML SDK'
     - template: lmtmlops-publish-model-artifact-template.yml
