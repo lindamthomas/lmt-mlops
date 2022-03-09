@@ -25,7 +25,7 @@ resources:
 
 variables:
 - template: lmtmlops-variables-template.yml
-- group: devopsforai-aml-vg
+- group: lmt-driver-training-vg
 
 stages:
 - stage: 'Deploy_ACI'
