@@ -82,15 +82,15 @@ def main():
 
     # Hard code the parameters for training the model
     parameters = {
-        'learning_rate': 0.02,
-        'boosting_type': 'gbdt',
-        'objective': 'binary',
-        'metric': 'auc',
-        'sub_feature': 0.7,
-        'num_leaves': 60,
-        'min_data': 100,
-        'min_hessian': 1,
-        'verbose': 2
+        "learning_rate": 0.07,
+        "boosting_type": "gbdt",
+        "objective": "binary",
+        "metric": "auc",
+        "sub_feature": 0.7,
+        "num_leaves": 60,
+        "min_data": 100,
+        "min_hessian": 1,
+        "verbose": 0
     }
     data = split_data(data_df)
     model = train_model(data, parameters)
