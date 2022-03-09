@@ -34,10 +34,12 @@ stages:
   jobs:
   - job: "Deploy_ACI"
     displayName: "Deploy to ACI"
-    #container: mlops
+    container: mlops
     timeoutInMinutes: 0
     steps:
     - download: none
+    - script: python -m pip install --user --upgrade azureml-sdk
+      displayName: 'upgrade Azure ML SDK'
     - template: lmtmlops-get-model-id-artifact-template.yml
       parameters:
         projectId: '$(resources.pipeline.model-train-ci.projectID)'
