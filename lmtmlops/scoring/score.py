@@ -195,7 +195,7 @@ def run(data, request_headers):
             request_headers.get("Traceparent", ""),
             len(result)
         ))
-        print("output: "+result.toList())
+        print("output: "+result)
         return {"result": result.tolist()}
     except Exception as e:
         error = str(e)
