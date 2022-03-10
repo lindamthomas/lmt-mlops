@@ -31,11 +31,13 @@ from inference_schema.schema_decorators \
     import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type \
     import NumpyParameterType
+import time
 
 
 def init():
     # load the model from file into a global object
     global model
+    print("model initialized" + time.strftime("%H:%M:%S"))
 
     # we assume that we have just one model
     # AZUREML_MODEL_DIR is an environment variable created during deployment.
@@ -172,25 +174,31 @@ output_sample = numpy.array([
 @input_schema('data', NumpyParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
 def run(data, request_headers):
-    result = model.predict(data)
+    try:
 
-    # Demonstrate how we can log custom data into the Application Insights
-    # traces collection.
-    # The 'X-Ms-Request-id' value is generated internally and can be used to
-    # correlate a log entry with the Application Insights requests collection.
-    # The HTTP 'traceparent' header may be set by the caller to implement
-    # distributed tracing (per the W3C Trace Context proposed specification)
-    # and can be used to correlate the request to external systems.
-    print(('{{"RequestId":"{0}", '
-           '"TraceParent":"{1}", '
-           '"NumberOfPredictions":{2}}}'
-           ).format(
-               request_headers.get("X-Ms-Request-Id", ""),
-               request_headers.get("Traceparent", ""),
-               len(result)
-    ))
+        result = model.predict(data)
+        print("Prediction created" + time.strftime("%H:%M:%S"))
 
-    return {"result": result.tolist()}
+        # Demonstrate how we can log custom data into the Application Insights
+        # traces collection.
+        # The 'X-Ms-Request-id' value is generated internally and can be used to
+        # correlate a log entry with the Application Insights requests collection.
+        # The HTTP 'traceparent' header may be set by the caller to implement
+        # distributed tracing (per the W3C Trace Context proposed specification)
+        # and can be used to correlate the request to external systems.
+        print(('{{"RequestId":"{0}", '
+               '"TraceParent":"{1}", '
+               '"NumberOfPredictions":{2}}}'
+               ).format(
+            request_headers.get("X-Ms-Request-Id", ""),
+            request_headers.get("Traceparent", ""),
+            len(result)
+        ))
+        return {"result": result.tolist()}
+    except Exception as e:
+        error = str(e)
+        print(error + time.strftime("%H:%M:%S"))
+        return error
 
 
 if __name__ == "__main__":
