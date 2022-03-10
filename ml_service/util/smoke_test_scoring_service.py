@@ -195,6 +195,7 @@ def main():
     else:
         output = call_web_service(e, args.type, args.service)
     print("Verifying service output")
+    print("output:"+output)
 
     assert "result" in output
     assert len(output["result"]) == output_len

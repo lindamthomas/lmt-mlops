@@ -178,7 +178,7 @@ def run(data, request_headers):
 
         print("input: " + data)
         result = model.predict(data)
-        print("Prediction created " + time.strftime("%H:%M:%S"))
+        print("Prediction created @ " + time.strftime("%H:%M:%S"))
 
         # Demonstrate how we can log custom data into the Application Insights
         # traces collection.
@@ -195,7 +195,6 @@ def run(data, request_headers):
             request_headers.get("Traceparent", ""),
             len(result)
         ))
-        print("output: "+result)
         return {"result": result.tolist()}
     except Exception as e:
         error = str(e)
