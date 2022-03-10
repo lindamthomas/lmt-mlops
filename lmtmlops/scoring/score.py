@@ -176,7 +176,7 @@ output_sample = numpy.array([
 def run(data, request_headers):
     try:
 
-        print("input: " + data)
+        #print("input: " + data)
         result = model.predict(data)
         print("Prediction created @ " + time.strftime("%H:%M:%S"))
 
