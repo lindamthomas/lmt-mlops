@@ -25,7 +25,7 @@ variables:
     value: lmtmlops_ds1
   # Uncomment DATASTORE_NAME if you have configured non default datastore to point to your data
   - name: DATASTORE_NAME
-    value: workspaceblobstore
+    value: trainingdata
   - name: DATASET_VERSION
     value: latest
   - name: TRAINING_PIPELINE_NAME
