@@ -2,7 +2,7 @@ pr: none
 trigger: none
 
 variables:
-- group: lmt-driver-training-vg
+- group: lmt-driver-training-vg-qa
 
 stages:
 - stage: 'Dev'
