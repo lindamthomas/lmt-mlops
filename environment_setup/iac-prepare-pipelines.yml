@@ -2,7 +2,7 @@ pr: none
 trigger: none
 
 variables:
-- group: lmt-driver-training-vg
+- group: lmt-driver-training-vg-qa
 - name: INPUT_CONTAINER_NAME
   value: 'inputdata'
 - name: TRAINING_CONTAINER_NAME
